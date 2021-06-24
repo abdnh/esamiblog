@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  {% if form.errors %}
+    <p>اسم المستخدم أو كلمة السر غير صالحين. حاول مجددًا.</p>
+  {% endif %}
+
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p>ليس لحسابك صلاحية بالوصول إلى هذه الصفحة. للوصول سجل الدخول بحساب له صلاحية.</p>
+    {% else %}
+      <p>سجل الدخول لرؤية هذه الصفحة.</p>
+    {% endif %}
+  {% endif %}
+
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    <table>
+      <tr>
+        <td>اسم المستخدم:</td>
+        <td>{{ form.username }}</td>
+      </tr>
+      <tr>
+        <td>كلمة السر:</td>
+        <td>{{ form.password }}</td>
+      </tr>
+    </table>
+    <input type="submit" value="دحول" />
+    <input type="hidden" name="next" value="{{ next }}" />
+  </form>
+
+  <p><a href="{% url 'password_reset' %}">فقدت كلمة السر؟</a></p>
+
+{% endblock %}

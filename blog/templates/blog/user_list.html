@@ -1,0 +1,29 @@
+{% extends "generic.html" %}
+
+{% block subtitle %}قائمة المستخدمين{% endblock %}
+
+{% block content %}
+  <h1>قائمة المستخدمين</h1>
+  {% if user_list %}
+  <table id="items-table">
+    <thead>
+      <tr>
+        <th>اسم المستخدم</th>
+        <th>الاسم الكامل</th>
+        <th>تاريخ الانضمام</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for user in user_list %}
+      <tr>
+        <td><a href="{{ user.get_absolute_url }}">{{ user.get_username }}</a></td>
+        <td>{{ user.get_full_name }}</td>
+        <td>{{ user.date_joined }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+    <p>ليس هناك أي مستخدمين</p>
+  {% endif %} 
+{% endblock %}

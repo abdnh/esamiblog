@@ -1,0 +1,26 @@
+{% extends "generic.html" %}
+
+{% block subtitle %}قائمة المواضيع{% endblock %}
+
+{% block content %}
+  <h1>قائمة المواضيع</h1>
+  {% if user.is_authenticated %}
+    <button class="button"><a href="{% url 'category-create' %}">أضف</a></button>
+  {% endif %}
+  {% if category_list %}
+    <ul>
+      {% for category in category_list %}
+        <li class="list-item">
+          <a href="{{ category.get_absolute_url }}">{{ category.name }}</a>
+          {% if user.is_superuser %}
+            {% load svg_icons %}
+            {% update_icon category %}
+            {% delete_icon category %}
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>ليس هناك أي مواضيع مسجلة.</p>
+  {% endif %} 
+{% endblock %}

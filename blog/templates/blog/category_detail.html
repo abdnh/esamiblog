@@ -1,0 +1,26 @@
+{% extends "generic.html" %}
+
+{% block subtitle %}موضوع: {{ category.name }}{% endblock %}
+
+{% block content %}
+  <header>
+    <h1>موضوع: {{ category.name }}</h1>
+    {% if user.is_superuser %}
+      {% load svg_icons %}
+      {% update_icon category %}
+      {% delete_icon category %}
+    {% endif %}
+  </header>
+
+  {% if posts %}
+    <h2>منشورات</h2>
+    <ul>
+      {% for post in posts %}
+        <li>
+          <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+{% endblock %}

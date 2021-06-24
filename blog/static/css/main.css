@@ -1,0 +1,124 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#sidebar ul {
+    border-bottom: 1px solid #d5d5d5;
+    padding: 10px;
+    padding-bottom: 20px;
+}
+
+#sidebar {
+    min-width: 175px;
+    margin-inline: auto;
+    flex-grow: 0;
+}
+
+#sidebar li {
+    margin-bottom: 10px;
+    text-align: center;
+    list-style: none;
+}
+
+#usernav {
+    list-style: none;
+}
+
+main {
+    margin-inline: 10px;
+    padding-inline: 10px;
+    flex-grow: 4;
+    max-width: 90%;
+}
+
+main ul {
+    padding-right: 15px;
+}
+
+h1 {
+    padding-bottom: 5px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.button {
+    min-width: 50px;
+    min-height: 25px;
+    padding: 0;
+    display: block;
+}
+
+.button > a {
+    display: block;
+}
+
+.list-item {
+    display: flex;
+    flex-direction: row;
+}
+
+.list-item > a {
+    padding-left: 5px;
+}
+
+.list-item > a > svg {
+    width: 12px;
+    height: 12px;
+}
+
+#items-table th, #items-table td {
+    text-align: right;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+#items-table {
+    border-collapse: collapse;
+    margin-top: 5px;
+}
+
+@import url(//fonts.googleapis.com/earlyaccess/notokufiarabic.css);
+
+#logo {
+    font-size: 2.5em;
+    text-align: center;
+    font-family: 'Noto Kufi Arabic', sans-serif;
+}
+
+.button > a, .button > a:visited,
+.button > a:hover, .button > a:active,
+.svgicon, .svgicon:visited, .svgicon:hover, .svgicon:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+.svgicon, .svgicon:visited, .svgicon:hover, .svgicon:active {
+    color: rgb(0, 0, 238);
+}
+
+header {
+    margin-bottom: 20px;
+}
+
+header > a {
+    margin-right: 10px;
+}
+
+/* #profile {
+    text-align: center;
+    display: block;
+} */
+
+.profile-picture {
+    display: block;
+    margin: 0px auto;
+}
+
+#comment-button {
+    margin-top: 20px;
+}

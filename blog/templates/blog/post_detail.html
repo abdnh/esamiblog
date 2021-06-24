@@ -1,0 +1,30 @@
+{% extends "generic.html" %}
+
+{% block subtitle %}{{ post.title }}{% endblock %}
+
+{% block content %}
+  <header>
+    <h1>{{ post.title }}</h1>
+    {% if user == post.writer %}
+      {% load svg_icons %}
+      {% update_icon post %}
+      {% delete_icon post %}
+    {% endif %}
+    <div>
+      الكاتب: <a href="{{ post.writer.get_absolute_url }}">{{ post.writer.get_username }}</a> |
+      تاريخ النشر: {{ post.created }}
+      {% if post.created != post.mod %}
+      | آخر تعديل: {{ post.mod }}
+      {% endif %}
+      {% load category_extras %}
+      {% category_list "| مواضيع:" post %}
+    </div>
+  </header>
+  <article>
+    {{ post.content }}
+  </article>
+
+  <button class="button" id="comment-button"><a href="{% url 'comment-create' post.id %}">تعليق</a></button>
+  {% include 'blog/comment_tree.html' %}
+
+{% endblock %}

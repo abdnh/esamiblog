@@ -1,0 +1,33 @@
+{% extends 'generic.html' %}
+
+{% block subtitle %}مستخدم: {{ user.get_username }}{% endblock %}
+
+{% block content %}
+
+<header>
+    <h1>مستخدم: {{ user.get_username }}</h1>
+    {% if request.user == user %}
+        {% load svg_icons %}
+        {% user_update_icon user %}
+        {% comment %} {% user_delete_icon user %} {% endcomment %}
+    {% endif %}
+</header>
+{% load static %}
+<img class="profile-picture" alt="profile picture" src="{% if user.profile_picture %}{{ user.profile_picture.url }}{% else %}{% static 'images/default-profile-picture.jpg' %}{% endif %}" wdith="150" height="100">
+<table style="margin: 0px auto;">
+    <tbody>
+        <tr>
+            <th>اسم مستخدم:</th>
+            <td>{{ user.get_username }}</td>
+        </tr>
+        <tr>
+            <th>اسم:</th>
+            <td>{{ user.get_full_name }}</td>
+        </tr>
+        <tr>
+            <th>وصف:</th>
+            <td>{{ user.bio }}</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

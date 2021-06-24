@@ -1,0 +1,42 @@
+{% extends "generic.html" %}
+
+{% block subtitle %}قائمة المنشورات{% endblock %}
+
+{% block content %}
+  <h1>قائمة المنشورات</h1>
+  {% if user.is_authenticated %}
+    <button class="button"><a href="{% url 'post-create' %}">انشر</a></button>
+  {% endif %}
+  {% if post_list %}
+  <table id="items-table">
+    <thead>
+      <tr>
+        <th>عنوان</th>
+        <th>كاتب</th>
+        <th>تاريخ الإنشاء</th>
+        {% if user.is_authenticated %}<th></th>{% endif %}
+      </tr>
+    </thead>
+    <tbody>
+    {% for post in post_list %}
+      <tr>
+        <td><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></td>
+        <td dir="ltr"><a href="{% url 'user-detail' post.writer.get_username %}">{{ post.writer.get_username }}</a></td>
+        <td>{{ post.created }}</td>
+        {% if user.is_authenticated %}
+          <td>
+            {% if user == post.writer %}
+              {% load svg_icons %}
+              {% update_icon post %}
+              {% delete_icon post %}
+              {% endif %}
+          </td>
+        {% endif %}
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+    <p>ليس هناك أي منشورات.</p>
+  {% endif %} 
+{% endblock %}

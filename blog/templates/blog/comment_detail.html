@@ -1,0 +1,29 @@
+{% extends "generic.html" %}
+
+{% block subtitle %}{{ comment.content|truncatechars:30 }}{% endblock %}
+
+{% block content %}
+  <header>
+    {% comment %}
+        <!-- TODO -->
+        {% if user == post.writer %}
+            {% load svg_icons %}
+            {% update_icon post %}
+            {% delete_icon post %}
+        {% endif %}
+    {% endcomment %}
+    <div>
+        الكاتب: <a href="{{ post.writer.get_absolute_url }}">{{ comment.writer.get_username }}</a> |
+        تاريخ النشر: {{ comment.created }} |
+        {% if comment.parent_comment %}ردًا على: <a href="{{ comment.parent_comment.get_absolute_url }}">{{ comment.parent_comment.content|truncatechars:20 }}</a> |{% endif %}
+        منشور: <a href="{{ comment.post.get_absolute_url }}">{{ comment.post.title|truncatechars:20 }}</a>
+    </div>
+  </header>
+  <article>
+    {{ comment.content }}
+  </article>
+
+  <button class="button" id="comment-button"><a href="{% url 'comment-reply' comment.id %}">تعليق</a></button>
+  {% include 'blog/comment_tree.html' %}
+
+{% endblock %}

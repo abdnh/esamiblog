@@ -1,0 +1,16 @@
+{% extends "generic.html" %}
+
+{% block subtitle %}حذف منشور "{{ post }}"{% endblock %}
+
+{% block content %}
+
+<h1>حذف منشور</h1>
+
+<p>هل أنت متأكد من أنك تريد حذف المنشور "{{ post }}"؟</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <input type="submit" value="نعم">
+</form>
+
+{% endblock %}

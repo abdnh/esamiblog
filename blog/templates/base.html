@@ -1,0 +1,54 @@
+<!doctype html>
+<html dir="rtl" lang="ar">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+    <title>{% block title %}عصامي بلوغ{% endblock %}</title>
+  </head>
+  <body>
+    <nav id="sidebar">
+      <ul id="usernav">
+        {% if request.user.is_authenticated %}
+        <img class="profile-picture" alt="profile picture" src="{% if request.user.profile_picture %}{{ request.user.profile_picture.url }}{% else %}{% static 'images/default-profile-picture.jpg' %}{% endif %}" wdith="150" height="100">
+        <li><b><a href="{% url 'profile' %}">{{ request.user.get_username }}</a></b></li>
+        <li><a href="{% url 'logout' %}?next={{request.path}}">خروج</a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}?next={{request.path}}">دخول</a></li>
+        <li><a href="{% url 'signup' %}?next={{request.path}}">تسجيل</a></li>
+        {% endif %}
+      </ul>
+      <ul id="navlinks">
+        <li><a href="{% url 'index' %}">الصفحة الرئيسية</a></li>
+        <li><a href="{% url 'post-list' %}">منشورات</a></li>
+        <li><a href="{% url 'user-list' %}">مستخدمون</a></li>
+        <li><a href="{% url 'category-list' %}">مواضيع</a></li>
+      </ul>
+    </nav>
+    <main>
+      {% block content %}
+      {% endblock %}
+    </main>
+
+  </body>
+</html>
+
+{% block pagination %}
+  {% if is_paginated %}
+      <div class="pagination">
+          <span class="page-links">
+              {% if page_obj.has_previous %}
+                  <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">السابق</a>
+              {% endif %}
+              <span class="page-current">
+                  صفحة {{ page_obj.number }} من أصل {{ page_obj.paginator.num_pages }}.
+              </span>
+              {% if page_obj.has_next %}
+                  <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">التالي</a>
+              {% endif %}
+          </span>
+      </div>
+  {% endif %}
+{% endblock %}
