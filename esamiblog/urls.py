@@ -45,6 +45,7 @@ urlpatterns = [
     path('category/<int:pk>/update', views.CategoryUpdateView.as_view(), name='category-update'),
     path('category/<int:pk>/delete', views.CategoryDeleteView.as_view(), name='category-delete'),
 
+    path('preferences/', views.preferences, name='preferences'),
 ]
 
 # Serve static files during development

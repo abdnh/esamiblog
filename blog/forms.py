@@ -20,3 +20,9 @@ class UserRegistrationForm(UserCreationForm):
             user.save()
         return user
 
+class ColorPickerWidget(forms.TextInput):
+    input_type = 'color'
+
+class PreferencesForm(forms.Form):
+    bgcolor = forms.Field(widget=ColorPickerWidget, label='لون الخلفية')
+

@@ -6,9 +6,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
+from django.http.response import HttpResponseRedirect
 
 from .models import Category, Post, User, Comment
-from .forms import UserRegistrationForm
+from .forms import UserRegistrationForm, PreferencesForm
 
 
 def index(request):
@@ -209,3 +210,18 @@ class CommentReplyView(LoginRequiredMixin, CreateView):
         else:
             return reverse('post-detail', kwargs={'pk': self.comment_parent_post.id})
 
+
+def preferences(request):
+    if request.method == 'POST':
+        form = PreferencesForm(data=request.POST)
+        if form.is_valid():
+            request.session['bgcolor'] = form.cleaned_data['bgcolor']
+            return HttpResponseRedirect(reverse('preferences'))
+    else:
+        form = PreferencesForm()
+
+    context = {
+        'form': form
+    }
+
+    return render(request, 'blog/preferences_form.html', context)

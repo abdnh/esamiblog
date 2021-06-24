@@ -8,7 +8,7 @@
 
     <title>{% block title %}عصامي بلوغ{% endblock %}</title>
   </head>
-  <body>
+  <body {% if request.session.bgcolor %}style="background-color: {{ request.session.bgcolor }};"{% endif %}>
     <nav id="sidebar">
       <ul id="usernav">
         {% if request.user.is_authenticated %}
@@ -25,6 +25,9 @@
         <li><a href="{% url 'post-list' %}">منشورات</a></li>
         <li><a href="{% url 'user-list' %}">مستخدمون</a></li>
         <li><a href="{% url 'category-list' %}">مواضيع</a></li>
+      </ul>
+      <ul>
+        <li><a href="{% url 'preferences' %}">إعدادات الموقع</a></li>
       </ul>
     </nav>
     <main>

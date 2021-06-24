@@ -1,0 +1,14 @@
+{% extends "generic.html" %}
+
+{% block subtitle %}إعدادات الموقع{% endblock %}
+
+{% block content %}
+  <h1>إعدادات الموقع</h1>
+  <form action="" method="post">
+    {% csrf_token %}
+    <table>
+      {{ form.as_table }}
+    </table>
+    <input type="submit" value="حفظ">
+  </form>
+{% endblock %}
