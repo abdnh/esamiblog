@@ -5,6 +5,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormMi
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
 
 from .models import Category, Post, User, Comment
 from .forms import UserRegistrationForm
@@ -33,7 +34,7 @@ class UserDetailView(DetailView):
 
     def get_object(self, queryset=None):
         username = self.kwargs.get('username')
-        return self.model.objects.filter(username=username).get()
+        return get_object_or_404(self.model, username=username)
 
 
 class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):

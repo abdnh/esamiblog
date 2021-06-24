@@ -26,7 +26,7 @@
         </tr>
         <tr>
             <th>وصف:</th>
-            <td>{{ user.bio }}</td>
+            <td>{% if user.bio %}{{ user.bio }}{% endif %}</td>
         </tr>
     </tbody>
 </table>
