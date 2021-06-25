@@ -1,3 +1,3 @@
-# esamiblog
+# عصامي بلوغ
 
-A toy blogging platform I built for fun.
+منصة تدوين تجريبية بسيطة أنشأتها للتسلية والتعلم.
