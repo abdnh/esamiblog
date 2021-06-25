@@ -22,10 +22,10 @@ body {
 }
 
 #sidebar li {
-    margin-bottom: 0px;
+    margin-bottom: 0.5rem;
     text-align: center;
     list-style: none;
-    border: ridge black 2px;
+    box-shadow: 2px 2px 6px #1c3d61;
     border-radius: 5px;
 }
 
