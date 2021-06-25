@@ -133,3 +133,12 @@ header > a {
 #comment-button {
     margin-top: 20px;
 }
+
+.pagination {
+    margin-top: 15px;
+}
+
+.page-current {
+    margin-right: 5px;
+    margin-left: 5px;
+}

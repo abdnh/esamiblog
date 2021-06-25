@@ -19,7 +19,6 @@ def index(request):
 
 @login_required
 def profile(request):
-
     return HttpResponseRedirect(reverse('user-detail', kwargs={'username': request.user.get_username()}))
 
 
