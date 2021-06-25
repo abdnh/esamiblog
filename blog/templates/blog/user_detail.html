@@ -7,7 +7,7 @@
 <header>
     <h1>مستخدم: {{ user.get_username }}</h1>
     {% if request.user == user %}
-        {% load svg_icons %}
+        {% load esami_extras %}
         {% user_update_icon user %}
         {% comment %} {% user_delete_icon user %} {% endcomment %}
     {% endif %}

@@ -8,7 +8,7 @@
 
     <title>{% block title %}عصامي بلوغ{% endblock %}</title>
   </head>
-  {% load misc_extras %}
+  {% load esami_extras %}
   <body style="background-color: {% get_item request.session 'bgcolor' DEFAULT_BG_COLOR %};">
     <nav id="sidebar">
       {% if request.user.is_authenticated %}

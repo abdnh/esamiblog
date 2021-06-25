@@ -6,7 +6,7 @@
   <header>
     <h1>موضوع: {{ category.name }}</h1>
     {% if user.is_superuser %}
-      {% load svg_icons %}
+      {% load esami_extras %}
       {% update_icon category %}
       {% delete_icon category %}
     {% endif %}

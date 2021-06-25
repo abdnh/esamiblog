@@ -3,10 +3,10 @@
 {% block subtitle %}{{ post.title }}{% endblock %}
 
 {% block content %}
+  {% load esami_extras %}
   <header>
     <h1>{{ post.title }}</h1>
     {% if user == post.writer %}
-      {% load svg_icons %}
       {% update_icon post %}
       {% delete_icon post %}
     {% endif %}
@@ -16,7 +16,6 @@
       {% if post.created != post.mod %}
       | آخر تعديل: {{ post.mod }}
       {% endif %}
-      {% load category_extras %}
       {% category_list "| مواضيع:" post %}
     </div>
   </header>
