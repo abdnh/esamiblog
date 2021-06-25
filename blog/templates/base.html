@@ -10,10 +10,11 @@
   </head>
   <body {% if request.session.bgcolor %}style="background-color: {{ request.session.bgcolor }};"{% endif %}>
     <nav id="sidebar">
+      <img class="profile-picture" alt="profile picture" src="{% if request.user.profile_picture %}{{ request.user.profile_picture.url }}{% else %}{% static 'images/default-profile-picture.jpg' %}{% endif %}" wdith="150" height="100">
+      <b><a href="{% url 'profile' %}">{{ request.user.get_username }}</a></b>
       <ul id="usernav">
         {% if request.user.is_authenticated %}
-        <img class="profile-picture" alt="profile picture" src="{% if request.user.profile_picture %}{{ request.user.profile_picture.url }}{% else %}{% static 'images/default-profile-picture.jpg' %}{% endif %}" wdith="150" height="100">
-        <li><b><a href="{% url 'profile' %}">{{ request.user.get_username }}</a></b></li>
+        <!-- <li><b><a href="{% url 'profile' %}">{{ request.user.get_username }}</a></b></li> -->
         <li><a href="{% url 'logout' %}?next={{request.path}}">خروج</a></li>
         {% else %}
         <li><a href="{% url 'login' %}?next={{request.path}}">دخول</a></li>
