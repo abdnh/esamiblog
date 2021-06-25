@@ -84,7 +84,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     fields = ['title', 'content', 'categories']
 
     def form_valid(self, form):
-        self.object = form.save(commit=False)
+        self.object = form.save()
         self.object.writer = self.request.user
         self.object.save()
         return FormMixin.form_valid(self, form)
