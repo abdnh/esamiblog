@@ -99,7 +99,7 @@ h1 {
 
 @import url(//fonts.googleapis.com/earlyaccess/notokufiarabic.css);
 
-#logo {
+.logo {
     font-size: 2.5em;
     text-align: center;
     font-family: 'Noto Kufi Arabic', sans-serif;
