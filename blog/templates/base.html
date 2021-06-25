@@ -8,7 +8,8 @@
 
     <title>{% block title %}عصامي بلوغ{% endblock %}</title>
   </head>
-  <body {% if request.session.bgcolor %}style="background-color: {{ request.session.bgcolor }};"{% endif %}>
+  {% load misc_extras %}
+  <body style="background-color: {% get_item request.session 'bgcolor' DEFAULT_BG_COLOR %};">
     <nav id="sidebar">
       {% if request.user.is_authenticated %}
         <img class="profile-picture" alt="profile picture" src="{% if request.user.profile_picture %}{{ request.user.profile_picture.url }}{% else %}{% static 'images/default-profile-picture.jpg' %}{% endif %}" wdith="150" height="100">

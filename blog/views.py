@@ -1,3 +1,4 @@
+from blog import context_processors
 from django.shortcuts import render
 from django.urls.base import reverse
 from django.views.generic import DetailView, ListView
@@ -218,7 +219,10 @@ def preferences(request):
             request.session['bgcolor'] = form.cleaned_data['bgcolor']
             return HttpResponseRedirect(reverse('preferences'))
     else:
-        form = PreferencesForm()
+        data = {
+        }
+        data['bgcolor'] = request.session.get('bgcolor', context_processors.context_vars['DEFAULT_BG_COLOR'])
+        form = PreferencesForm(data=data)
 
     context = {
         'form': form
