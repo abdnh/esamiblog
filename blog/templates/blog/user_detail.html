@@ -4,30 +4,32 @@
 
 {% block content %}
 
-<header>
-    <h1>مستخدم: {{ user.get_username }}</h1>
-    {% if request.user == user %}
-        {% load esami_extras %}
-        {% user_update_icon user %}
-        {% comment %} {% user_delete_icon user %} {% endcomment %}
-    {% endif %}
-</header>
-{% load static %}
-<img class="profile-picture" alt="profile picture" src="{% if user.profile_picture %}{{ user.profile_picture.url }}{% else %}{% static 'images/default-profile-picture.jpg' %}{% endif %}" wdith="150" height="100">
-<table style="margin: 0px auto;">
-    <tbody>
-        <tr>
-            <th>اسم مستخدم:</th>
-            <td>{{ user.get_username }}</td>
-        </tr>
-        <tr>
-            <th>اسم:</th>
-            <td>{{ user.get_full_name }}</td>
-        </tr>
-        <tr>
-            <th>وصف:</th>
-            <td>{% if user.bio %}{{ user.bio }}{% endif %}</td>
-        </tr>
-    </tbody>
-</table>
+    <header>
+        <h1>مستخدم: {{ user.get_username }}</h1>
+        {% if request.user == user %}
+            {% load esami_extras %}
+            {% user_update_icon user %}
+            {% comment %} {% user_delete_icon user %} {% endcomment %}
+        {% endif %}
+    </header>
+    {% load static %}
+    <img class="profile-picture" alt="profile picture" src="{% if user.profile_picture %}{{ user.profile_picture.url }}{% else %}{% static 'images/default-profile-picture.jpg' %}{% endif %}" wdith="150" height="100">
+    <table style="margin: 0px auto;">
+        <tbody>
+            <tr>
+                <th>اسم مستخدم:</th>
+                <td>{{ user.get_username }}</td>
+            </tr>
+            <tr>
+                <th>اسم:</th>
+                <td>{{ user.get_full_name }}</td>
+            </tr>
+            <tr>
+                <th>وصف:</th>
+                <td>{% if user.bio %}{{ user.bio }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>قائمة منشورات {{ user.get_username }}</h2>
+    {% include "blog/post_table.html" %}
 {% endblock %}

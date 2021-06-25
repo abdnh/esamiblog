@@ -19,11 +19,8 @@ def index(request):
 
 @login_required
 def profile(request):
-    
-    context = {
-        'user': request.user,
-    }
-    return render(request, 'blog/user_detail.html', context)
+
+    return HttpResponseRedirect(reverse('user-detail', kwargs={'username': request.user.get_username()}))
 
 
 class UserListView(ListView):
@@ -37,6 +34,11 @@ class UserDetailView(DetailView):
     def get_object(self, queryset=None):
         username = self.kwargs.get('username')
         return get_object_or_404(self.model, username=username)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['post_list'] = Post.objects.filter(writer=self.get_object())
+        return context
 
 
 class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
