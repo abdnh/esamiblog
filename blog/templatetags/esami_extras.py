@@ -1,7 +1,15 @@
 from django import template
 from django.utils.safestring import mark_safe
 from django.urls import reverse
+from django.template.defaultfilters import stringfilter
+
 from blog.models import Category
+
+import markdown as md
+import bleach
+from bleach import Cleaner
+from bleach.linkifier import LinkifyFilter
+
 
 register = template.Library()
 
@@ -51,3 +59,11 @@ def user_update_icon(user):
 def user_delete_icon(user):
     return delete_icon(user, reverse('user-delete', kwargs={'username': user.get_username()}))
 
+
+BLEACH_ALLOWED_TAGS = bleach.ALLOWED_TAGS + ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']
+cleaner = Cleaner(tags=BLEACH_ALLOWED_TAGS, filters=[LinkifyFilter])
+
+@register.filter
+@stringfilter
+def markdown(text):
+    return mark_safe(cleaner.clean(md.markdown(text)))

@@ -2,12 +2,13 @@
 
 {% block subtitle %}{{ comment.content|truncatechars:30 }}{% endblock %}
 
+{% load esami_extras %}
+
 {% block content %}
   <header>
     {% comment %}
         <!-- TODO -->
         {% if user == post.writer %}
-            {% load esami_extras %}
             {% update_icon post %}
             {% delete_icon post %}
         {% endif %}
@@ -20,7 +21,7 @@
     </div>
   </header>
   <article>
-    {{ comment.content }}
+    {{ comment.content|markdown }}
   </article>
 
   <button class="button" id="comment-button"><a href="{% url 'comment-reply' comment.id %}">تعليق</a></button>

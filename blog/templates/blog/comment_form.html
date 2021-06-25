@@ -4,7 +4,8 @@
 
 {% block content %}
   <h1>تعليق على منشور "{{ post.title }}"</h1>
-  <div style="margin-bottom: 10px;">{{ post.content|truncatechars:100 }}</div>
+  {% load esami_extras %}
+  <div style="margin-bottom: 10px;">{{ post.content|markdown }}</div>
   <form action="" method="post">
     {% csrf_token %}
     <table>

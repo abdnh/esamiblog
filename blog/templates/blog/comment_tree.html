@@ -1,3 +1,4 @@
+{% load esami_extras %}
 <article id="comment-tree">
     {% for padding, comment in comments %}
       <div class="comment" style="margin-right: {{ padding }}px;">
@@ -5,7 +6,7 @@
           <a href="{{ comment.writer.get_absolute_url }}">{{ comment.writer }}</a> |
           <a href="{{ comment.get_absolute_url }}">{{ comment.created }}</a>
         </div>
-        <div style="margin-top: 5px">{{ comment.content }}</div>
+        <div style="margin-top: 5px">{{ comment.content|markdown }}</div>
         <div style="margin-top: 5px"><a href="{% url 'comment-reply' comment.id %}?next={{ request.path }}">رد</a></div>
       </div>
     {% endfor %}

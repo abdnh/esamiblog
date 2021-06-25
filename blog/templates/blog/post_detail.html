@@ -20,7 +20,7 @@
     </div>
   </header>
   <article>
-    {{ post.content }}
+    {{ post.content|markdown }}
   </article>
 
   <button class="button" id="comment-button"><a href="{% url 'comment-create' post.id %}">تعليق</a></button>
