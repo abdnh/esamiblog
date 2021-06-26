@@ -2,11 +2,6 @@
     box-sizing: border-box;
 }
 
-body {
-    display: flex;
-    flex-wrap: wrap;
-}
-
 #sidebar ul {
     border-bottom: 1px solid #d5d5d5;
     padding: 10px;
@@ -14,10 +9,13 @@ body {
 }
 
 #sidebar {
-    min-width: 175px;
-    margin-left: auto;
-    margin-right: auto;
-    flex-grow: 0;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-width: thin;
 }
 
 #sidebar li {
@@ -39,15 +37,11 @@ body {
     color: rgb(255, 85, 85);
 }
 
-#usernav {
-    list-style: none;
-}
-
 main {
-    margin-inline: 10px;
-    padding-inline: 10px;
-    flex-grow: 4;
-    max-width: 90%;
+    margin-right: 250px;
+    padding-right: 25px;
+    margin-left: 10px;
+    margin-bottom: 2rem;
 }
 
 main ul {
@@ -141,4 +135,29 @@ header > a {
 .page-current {
     margin-right: 5px;
     margin-left: 5px;
+}
+
+#sidebar > ul {
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 900px) {
+    #sidebar {
+        display: block;
+        width: initial;
+        position: static;
+    }
+    #sidebar > ul {
+        flex-direction: row;
+        justify-content: center;
+    }
+    #sidebar li {
+        margin-left: 0.5rem;
+    }
+    main {
+        margin-right: 1rem;
+        margin-left: 1rem;
+        padding-right: 0;
+    }
 }
