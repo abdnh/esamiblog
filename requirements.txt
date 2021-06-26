@@ -9,3 +9,4 @@ django-storages
 boto3
 markdown
 bleach
+Pygments

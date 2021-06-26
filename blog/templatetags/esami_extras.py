@@ -5,7 +5,9 @@ from django.template.defaultfilters import stringfilter
 
 from blog.models import Category
 
-import markdown as md
+import markdown
+from markdown.extensions.toc import TocExtension, slugify_unicode
+
 import bleach
 from bleach import Cleaner
 from bleach.linkifier import LinkifyFilter
@@ -60,10 +62,34 @@ def user_delete_icon(user):
     return delete_icon(user, reverse('user-delete', kwargs={'username': user.get_username()}))
 
 
-BLEACH_ALLOWED_TAGS = bleach.ALLOWED_TAGS + ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']
-cleaner = Cleaner(tags=BLEACH_ALLOWED_TAGS, filters=[LinkifyFilter])
+BLEACH_ALLOWED_TAGS = bleach.ALLOWED_TAGS + [
+    'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'pre', 'div', 'span', 'br', 'img', 'sub', 'sup', 'hr',
+    'table', 'tbody', 'thead', 'tr', 'td', 'th', 'caption', 'col', 'colgroup', 'tfoot',
+]
+BLEACH_ALLOWED_ATTRIBUTES = {
+    'span': ['class'],
+    'div': ['class', 'role'],
+    'img': ['src', 'width', 'height', 'alt', 'title'],
+    'a': ['class', 'id', 'rel'],
+    'sub': ['class'],
+    'sup': ['class', 'id'],
+    'li': ['class', 'id', 'role'],
+}
+BLEACH_ALLOWED_ATTRIBUTES.update(bleach.ALLOWED_ATTRIBUTES)
+cleaner = Cleaner(tags=BLEACH_ALLOWED_TAGS, attributes=BLEACH_ALLOWED_ATTRIBUTES, filters=[LinkifyFilter])
+MD_EXTENSIONS = [
+    'fenced_code',
+    'codehilite',
+    'tables',
+    'nl2br',
+    'footnotes',
+    TocExtension(slugify=slugify_unicode),
+]
+md = markdown.Markdown(extensions=MD_EXTENSIONS)
 
 @register.filter
 @stringfilter
 def markdown(text):
-    return mark_safe(cleaner.clean(md.markdown(text)))
+    html = cleaner.clean(md.convert(text))
+    md.reset()
+    return mark_safe(html)
