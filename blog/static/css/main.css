@@ -120,8 +120,7 @@ header > a {
 
 .profile-picture {
     display: block;
-    margin: 0px auto;
-    margin-bottom: 10px;
+    margin: 10px auto;
 }
 
 #comment-button {
