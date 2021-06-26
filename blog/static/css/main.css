@@ -57,7 +57,7 @@ h1 {
 .button {
     min-width: 50px;
     min-height: 25px;
-    padding: 0;
+    margin-left: 12rem;
     display: block;
 }
 
@@ -159,4 +159,9 @@ header > a {
         margin-left: 1rem;
         padding-right: 0;
     }
+}
+
+#ops-bar {
+    display: flex;
+    flex-wrap: wrap;
 }

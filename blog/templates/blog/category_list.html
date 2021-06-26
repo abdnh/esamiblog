@@ -2,11 +2,19 @@
 
 {% block subtitle %}قائمة المواضيع{% endblock %}
 
+{% load esami_extras %}
+
 {% block content %}
   <h1>قائمة المواضيع</h1>
-  {% if user.is_authenticated %}
-    <button class="button"><a href="{% url 'category-create' %}">أضف</a></button>
-  {% endif %}
+  <div id="ops-bar">
+    {% if request.user.is_authenticated %}
+      <button class="button"><a href="{% url 'category-create' %}">أضف</a></button>
+    {% endif %}
+    <form method="GET" action="">
+      <input type="search" name="search" value="{% get_item request.GET 'search' '' %}">
+      <input type="submit" value="بحث">
+    </form>
+  </div>
   {% if category_list %}
     <ul>
       {% for category in category_list %}
@@ -21,6 +29,6 @@
       {% endfor %}
     </ul>
   {% else %}
-    <p>ليس هناك أي مواضيع مسجلة.</p>
+    <p>ليس هناك أي مواضيع.</p>
   {% endif %} 
 {% endblock %}

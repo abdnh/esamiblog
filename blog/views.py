@@ -8,6 +8,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.http.response import HttpResponseRedirect
+from django.db.models import Q
 
 from .models import Category, Post, User, Comment
 from .forms import UserRegistrationForm, PreferencesForm
@@ -25,6 +26,18 @@ def profile(request):
 class UserListView(ListView):
     model = User
     paginate_by = 10
+
+    def get_queryset(self):
+        query = self.request.GET.get('search', None)
+        if query:
+            return self.model.objects.filter(
+                Q(username__contains=query) |
+                Q(bio__contains=query) |
+                Q(first_name__contains=query) |
+                Q(last_name__contains=query)
+            )
+        else:
+            return self.model.objects.all()
 
 
 class UserDetailView(DetailView):
@@ -55,6 +68,13 @@ class UserUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class PostListView(ListView):
     model = Post
     paginate_by = 10
+
+    def get_queryset(self):
+        query = self.request.GET.get('search', None)
+        if query:
+            return self.model.objects.filter(Q(title__contains=query) | Q(content__contains=query))
+        else:
+            return self.model.objects.all()
 
 
 def comment_children(comment, padding):
@@ -109,6 +129,13 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 class CategoryListView(ListView):
     model = Category
     paginate_by = 10
+
+    def get_queryset(self):
+        query = self.request.GET.get('search', None)
+        if query:
+            return self.model.objects.filter(name__contains=query)
+        else:
+            return self.model.objects.all()
 
 
 class CategoryDetailView(DetailView):

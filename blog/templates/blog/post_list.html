@@ -2,10 +2,18 @@
 
 {% block subtitle %}قائمة المنشورات{% endblock %}
 
+{% load esami_extras %}
+
 {% block content %}
   <h1>قائمة المنشورات</h1>
-  {% if request.user.is_authenticated %}
-    <button class="button"><a href="{% url 'post-create' %}">انشر</a></button>
-  {% endif %}
+  <div id="ops-bar">
+    {% if request.user.is_authenticated %}
+      <button class="button"><a href="{% url 'post-create' %}">انشر</a></button>
+    {% endif %}
+    <form method="GET" action="">
+      <input type="search" name="search" value="{% get_item request.GET 'search' '' %}">
+      <input type="submit" value="بحث">
+    </form>
+  </div>
   {% include "blog/post_table.html" %}
 {% endblock %}

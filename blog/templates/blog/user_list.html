@@ -2,8 +2,16 @@
 
 {% block subtitle %}قائمة المستخدمين{% endblock %}
 
+{% load esami_extras %}
+
 {% block content %}
   <h1>قائمة المستخدمين</h1>
+  <div id="ops-bar">
+    <form method="GET" action="">
+      <input type="search" name="search" value="{% get_item request.GET 'search' '' %}">
+      <input type="submit" value="بحث">
+    </form>
+  </div>
   {% if user_list %}
   <table id="items-table">
     <thead>
