@@ -67,8 +67,8 @@ BLEACH_ALLOWED_TAGS = bleach.ALLOWED_TAGS + [
     'table', 'tbody', 'thead', 'tr', 'td', 'th', 'caption', 'col', 'colgroup', 'tfoot',
 ]
 BLEACH_ALLOWED_ATTRIBUTES = {
-    'span': ['class'],
-    'div': ['class', 'role'],
+    'span': ['class', 'role', 'dir'],
+    'div': ['class', 'role', 'dir'],
     'img': ['src', 'width', 'height', 'alt', 'title'],
     'a': ['class', 'id', 'rel'],
     'sub': ['class'],
