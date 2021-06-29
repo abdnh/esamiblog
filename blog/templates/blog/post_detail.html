@@ -13,7 +13,7 @@
     <div>
       الكاتب: <a href="{{ post.writer.get_absolute_url }}">{{ post.writer.get_username }}</a> |
       تاريخ النشر: {{ post.created }}
-      {% if post.created != post.mod %}
+      {% if created_mod_delta.total_seconds >= 60 %}
       | آخر تعديل: {{ post.mod }}
       {% endif %}
       {% category_list "| مواضيع:" post %}

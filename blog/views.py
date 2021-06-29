@@ -1,4 +1,3 @@
-from blog import context_processors
 from django.shortcuts import render
 from django.urls.base import reverse
 from django.views.generic import DetailView, ListView
@@ -12,6 +11,7 @@ from django.db.models import Q
 
 from .models import Category, Post, User, Comment
 from .forms import UserRegistrationForm, PreferencesForm
+from blog import context_processors
 
 
 def index(request):
@@ -95,7 +95,9 @@ class PostDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['comments'] = post_comment_tree(self.get_object(), 10)
+        post = self.get_object()
+        context['comments'] = post_comment_tree(post, 10)
+        context['created_mod_delta'] = post.mod - post.created
         return context
 
 
