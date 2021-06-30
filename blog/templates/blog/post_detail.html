@@ -10,13 +10,14 @@
       {% update_icon post %}
       {% delete_icon post %}
     {% endif %}
-    <div>
-      الكاتب: <a href="{{ post.writer.get_absolute_url }}">{{ post.writer.get_username }}</a> |
-      تاريخ النشر: {{ post.created }}
+    <div id="post-info">
+      <span>الكاتب: <a href="{{ post.writer.get_absolute_url }}">{{ post.writer.get_username }}</a></span>
+      <span>تاريخ النشر: {{ post.created }}</span>
       {% if created_mod_delta.total_seconds >= 60 %}
-      | آخر تعديل: {{ post.mod }}
+        <span>آخر تعديل: {{ post.mod }}</span>
       {% endif %}
-      {% category_list "| مواضيع:" post %}
+      <span>{{ comments|length }} تعليق</span>
+      {% category_list "<span>مواضيع:" post "</span>" %}
     </div>
   </header>
   <article>

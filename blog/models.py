@@ -56,7 +56,7 @@ class Comment(models.Model):
     created = models.DateTimeField(verbose_name='تاريخ الإنشاء', auto_now_add=True)
     content = models.TextField(verbose_name='نص التعليق')
     writer = models.ForeignKey(User, verbose_name='كاتب', null=True, on_delete=models.SET_NULL)
-    post = models.ForeignKey(Post, verbose_name='منشور', null=True, on_delete=models.SET_NULL)
+    post = models.ForeignKey(Post, verbose_name='منشور', null=True, on_delete=models.SET_NULL, related_name='comments')
     parent_comment = models.ForeignKey('self', verbose_name='التعليق الأب', null=True, on_delete=models.SET_NULL)
 
     def __str__(self):

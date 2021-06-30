@@ -118,6 +118,21 @@ header > a {
     margin-right: 10px;
 }
 
+#post-info {
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#post-info > span {
+    margin-left: 5px;
+}
+
+#post-info > span:not(:last-child)::after {
+    content: "|";
+    margin-right: 5px;
+}
+
 .profile-picture {
     display: block;
     margin: 10px auto;

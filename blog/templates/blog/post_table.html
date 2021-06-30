@@ -5,6 +5,7 @@
       <th>عنوان</th>
       <th>كاتب</th>
       <th>تاريخ الإنشاء</th>
+      <th>عدد التعليقات</th>
       {% if request.user.is_authenticated %}<th></th>{% endif %}
     </tr>
   </thead>
@@ -14,6 +15,7 @@
       <td><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></td>
       <td dir="ltr"><a href="{% url 'user-detail' post.writer.get_username %}">{{ post.writer.get_username }}</a></td>
       <td>{{ post.created }}</td>
+      <td>{{ post.comments.all.count }}</td>
       {% if request.user.is_authenticated %}
         <td>
           {% if request.user == post.writer %}

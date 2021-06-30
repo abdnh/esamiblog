@@ -20,7 +20,7 @@ def get_item(dictionary, key, default):
     return dictionary.get(key, default)
 
 @register.simple_tag()
-def category_list(label, from_obj):
+def category_list(before, from_obj, after):
     category_rels = from_obj.categories.through.objects.filter(**{f'{from_obj.__class__.__name__.lower()}_id': from_obj.id})
     if len(category_rels) < 1:
         return mark_safe('')
@@ -29,7 +29,7 @@ def category_list(label, from_obj):
         category = Category.objects.get(pk=category_rel.category_id)
         out.append(f'<a href="{ category.get_absolute_url() }">{ category.name }</a>')
 
-    return mark_safe(label + ' ' + '، '.join(out))
+    return mark_safe(before + ' ' + '، '.join(out) + after)
 
 @register.simple_tag
 def update_icon(obj, update_url=None):
