@@ -7,7 +7,7 @@ class UserRegistrationForm(UserCreationForm):
 
     email = forms.EmailField(label='بريد إلكتروني')
 
-    class Meta:
+    class Meta(UserCreationForm.Meta):
         model = User
         fields = (
             'username',
@@ -15,7 +15,6 @@ class UserRegistrationForm(UserCreationForm):
             'password1',
             'password2',
         )
-
 
 class ColorPickerWidget(forms.TextInput):
     input_type = 'color'
