@@ -28,25 +28,25 @@ urlpatterns = [
 
     path('users/', views.UserListView.as_view(), name='user-list'),
     path('user/<username>/', views.UserDetailView.as_view(), name='user-detail'),
-    path('user/<username>/update', views.UserUpdateView.as_view(), name='user-update'),
+    path('user/<username>/update/', views.UserUpdateView.as_view(), name='user-update'),
     path('user/<username>/feed/', UserPostsFeed()),
 
     path('posts/', views.PostListView.as_view(), name='post-list'),
     path('posts/feed/', LatestPostsFeed()),
     path('post/create/', views.PostCreateView.as_view(), name='post-create'),
     path('post/<int:pk>', views.PostDetailView.as_view(), name='post-detail'),
-    path('post/<int:pk>/update', views.PostUpdateView.as_view(), name='post-update'),
-    path('post/<int:pk>/delete', views.PostDeleteView.as_view(), name='post-delete'),
+    path('post/<int:pk>/update/', views.PostUpdateView.as_view(), name='post-update'),
+    path('post/<int:pk>/delete/', views.PostDeleteView.as_view(), name='post-delete'),
     
-    path('post/<int:pk>/comment', views.CommentCreateView.as_view(), name='comment-create'),
-    path('comment/<int:pk>/reply', views.CommentReplyView.as_view(), name='comment-reply'),
-    path('comment/<int:pk>', views.CommentDetailView.as_view(), name='comment-detail'),
+    path('post/<int:pk>/comment/', views.CommentCreateView.as_view(), name='comment-create'),
+    path('comment/<int:pk>/reply/', views.CommentReplyView.as_view(), name='comment-reply'),
+    path('comment/<int:pk>/', views.CommentDetailView.as_view(), name='comment-detail'),
 
     path('categories/', views.CategoryListView.as_view(), name='category-list'),
     path('category/create/', views.CategoryCreateView.as_view(), name='category-create'),
-    path('category/<int:pk>', views.CategoryDetailView.as_view(), name='category-detail'),
-    path('category/<int:pk>/update', views.CategoryUpdateView.as_view(), name='category-update'),
-    path('category/<int:pk>/delete', views.CategoryDeleteView.as_view(), name='category-delete'),
+    path('category/<int:pk>/', views.CategoryDetailView.as_view(), name='category-detail'),
+    path('category/<int:pk>/update/', views.CategoryUpdateView.as_view(), name='category-update'),
+    path('category/<int:pk>/delete/', views.CategoryDeleteView.as_view(), name='category-delete'),
 
     path('preferences/', views.preferences, name='preferences'),
 ]
