@@ -6,7 +6,9 @@ def user_content_path(user, filename):
     return 'usercontent/{0}/profile{1}'.format(user.id, filename[filename.rfind('.'):])
 
 class User(AbstractUser):
-    email = models.EmailField(verbose_name='بريد إلكتروني', unique=True)
+    email = models.EmailField(verbose_name='بريد إلكتروني', unique=True, error_messages={
+        'unique': 'هذا البريد الإلكتروني مستخدم بالفعل.'
+    })
     bio = models.TextField(verbose_name='نبذة عن الكاتب', null=True, blank=True)
     profile_picture = models.ImageField(verbose_name='صورة', upload_to=user_content_path, null=True, blank=True)
 
