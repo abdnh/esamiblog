@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from blog import views
+from esamiblog.feeds import LatestPostsFeed, UserPostsFeed
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,8 +29,10 @@ urlpatterns = [
     path('users/', views.UserListView.as_view(), name='user-list'),
     path('user/<username>/', views.UserDetailView.as_view(), name='user-detail'),
     path('user/<username>/update', views.UserUpdateView.as_view(), name='user-update'),
+    path('user/<username>/feed/', UserPostsFeed()),
 
     path('posts/', views.PostListView.as_view(), name='post-list'),
+    path('posts/feed/', LatestPostsFeed()),
     path('post/create/', views.PostCreateView.as_view(), name='post-create'),
     path('post/<int:pk>', views.PostDetailView.as_view(), name='post-detail'),
     path('post/<int:pk>/update', views.PostUpdateView.as_view(), name='post-update'),
