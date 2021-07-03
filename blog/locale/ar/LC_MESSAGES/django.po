@@ -1,0 +1,308 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-03 04:01+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language: Arabic\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: .\admin.py:13
+msgid "extra fields"
+msgstr "حقول إضافية"
+
+#: .\forms.py:11 .\models.py:10
+msgid "email address"
+msgstr "بريد إلكتروني"
+
+#: .\forms.py:12
+msgid "Required. You should provide a valid email address to sign up."
+msgstr "مطلوب. يجب أن تدخل بريدًا إلكترونيًا صالحًا للتسجيل."
+
+#: .\forms.py:28
+msgid "background color"
+msgstr "لون الخلفية"
+
+#: .\models.py:11
+msgid "This email address is already used."
+msgstr "البريد الإلكتروني مستخدم بالفعل."
+
+#: .\models.py:13
+msgid "about the author"
+msgstr "حول الكاتب"
+
+#: .\models.py:14
+msgid "profile picture"
+msgstr "صورة شخصية"
+
+#: .\models.py:27 .\templates\blog\user_detail.html:25
+msgid "name"
+msgstr "اسم"
+
+#: .\models.py:31 .\models.py:46
+msgid "categories"
+msgstr "مواضيع"
+
+#: .\models.py:41 .\templates\blog\post_table.html:6
+msgid "title"
+msgstr "عنوان"
+
+#: .\models.py:42 .\models.py:59 .\templates\blog\comment_detail.html:20
+#: .\templates\blog\post_detail.html:15 .\templates\blog\post_table.html:8
+msgid "publication date"
+msgstr "تاريخ النشر"
+
+#: .\models.py:43 .\templates\blog\post_detail.html:17
+msgid "last modification date"
+msgstr "تاريخ آخر تعديل"
+
+#: .\models.py:44
+msgid "text"
+msgstr "نص"
+
+#: .\models.py:45 .\models.py:61 .\templates\blog\comment_detail.html:19
+#: .\templates\blog\post_detail.html:14 .\templates\blog\post_table.html:7
+msgid "author"
+msgstr "كاتب"
+
+#: .\models.py:60
+msgid "content"
+msgstr "نص"
+
+#: .\models.py:62
+msgid "parent post"
+msgstr "المنشور الأب"
+
+#: .\models.py:63
+msgid "parent comment"
+msgstr "التعليق الأب"
+
+#: .\models.py:66
+msgid "comment #%(comment_id) on post \"%(post_title)\""
+msgstr "التعليق #%(comment_id) على منشور \"%(post_title)\""
+
+#: .\templates\404.html:4
+msgid "Page not found"
+msgstr "الصفحة غير موجودة"
+
+#: .\templates\404.html:7
+msgid "Requested page not found on the site"
+msgstr "الصفحة التي طلبتها غير موجودة"
+
+#: .\templates\base.html:13 .\templates\index.html:4
+msgid "Esami blog"
+msgstr "عصامي بلوغ"
+
+#: .\templates\base.html:21
+msgid "Esami"
+msgstr "عصامي"
+
+#: .\templates\base.html:26
+msgid "Log out"
+msgstr "تسجيل الخروج"
+
+#: .\templates\base.html:28
+msgid "Log in"
+msgstr "دخول"
+
+#: .\templates\base.html:29
+msgid "Sign up"
+msgstr "تسجيل"
+
+#: .\templates\base.html:33
+msgid "Home Page"
+msgstr "الصفحة الرئيسية"
+
+#: .\templates\base.html:34 .\templates\blog\category_detail.html:16
+msgid "Posts"
+msgstr "منشورات"
+
+#: .\templates\base.html:35
+msgid "Users"
+msgstr "مستخدمون"
+
+#: .\templates\base.html:36
+msgid "Categories"
+msgstr "مواضيع"
+
+#: .\templates\base.html:39 .\templates\blog\preferences_form.html:4
+#: .\templates\blog\preferences_form.html:7
+msgid "site preferences"
+msgstr "إعدادات الموقع"
+
+#: .\templates\base.html:57
+#, python-format
+msgid "Page %(page_num)s out %(num_pages)s"
+msgstr "الصفحة %(page_num)s من أصل %(num_pages)s"
+
+#: .\templates\blog\category_confirm_delete.html:4
+#, python-format
+msgid "Delete category \"%(category)s\""
+msgstr "حذف الموضوع \"%(category)s\""
+
+#: .\templates\blog\category_confirm_delete.html:7
+msgid "Delete category"
+msgstr "حذف موضوع"
+
+#: .\templates\blog\category_confirm_delete.html:8
+#, python-format
+msgid "Are you sure you want to delete the category \"%(category)s\"?"
+msgstr "هل أنت متأكد من أنك تريد حذف الموضوع \"%(category)s\"؟"
+
+#: .\templates\blog\category_confirm_delete.html:12
+msgid "Yes"
+msgstr "نعم"
+
+#: .\templates\blog\category_detail.html:4
+#: .\templates\blog\category_detail.html:7
+#, python-format
+msgid "Category: %(category_name)s"
+msgstr "موضوع: %(category_name)s"
+
+#: .\templates\blog\category_form.html:4 .\templates\blog\category_form.html:7
+msgid "Add/Edit Category"
+msgstr "إضافة/تعديل موضوع"
+
+#: .\templates\blog\category_form.html:13 .\templates\blog\post_form.html:13
+#: .\templates\blog\preferences_form.html:13 .\templates\blog\user_form.html:13
+msgid "save"
+msgstr "حفظ"
+
+#: .\templates\blog\category_list.html:4 .\templates\blog\category_list.html:9
+msgid "Category list"
+msgstr "قائمة المواضيع"
+
+#: .\templates\blog\category_list.html:12
+msgid "Add"
+msgstr "إضافة"
+
+#: .\templates\blog\category_list.html:16 .\templates\blog\post_list.html:16
+#: .\templates\blog\user_list.html:13
+msgid "search"
+msgstr "بحث"
+
+#: .\templates\blog\category_list.html:33
+msgid "There are no categories."
+msgstr "ليس هناك أي مواضيع."
+
+#: .\templates\blog\comment_detail.html:21
+msgid "replying to"
+msgstr "ردًا على"
+
+#: .\templates\blog\comment_detail.html:22
+msgid "post"
+msgstr "منشور"
+
+#: .\templates\blog\comment_detail.html:29 .\templates\blog\comment_form.html:4
+#: .\templates\blog\comment_form.html:15 .\templates\blog\post_detail.html:31
+msgid "comment"
+msgstr "تعليق"
+
+#: .\templates\blog\comment_form.html:7
+#, python-format
+msgid "Comment on post \"%(post_title)s\""
+msgstr "تعليق على منشور \"%(post_title)s\""
+
+#: .\templates\blog\post_confirm_delete.html:4
+msgid "Delete post"
+msgstr "حذف منشور"
+
+#: .\templates\blog\post_confirm_delete.html:8
+#, python-format
+msgid "Delete post \"%(post)s\""
+msgstr "حذف منشور \"%(post)s\""
+
+#: .\templates\blog\post_confirm_delete.html:9
+#, python-format
+msgid "Are you sure you want to delete post \"%(post)s\"?"
+msgstr "هل أنت متأكد من أنك تريد حذف المنشور \"%(post)s\"؟"
+
+#: .\templates\blog\post_confirm_delete.html:12
+msgid "yes"
+msgstr "نعم"
+
+#: .\templates\blog\post_detail.html:21
+#, python-format
+msgid "%(comment_count)s comment(s)"
+msgstr "%(comment_count)s تعليق"
+
+#: .\templates\blog\post_form.html:4 .\templates\blog\post_form.html:7
+msgid "Add/Edit post"
+msgstr "إضافة/تحرير منشور"
+
+#: .\templates\blog\post_list.html:4 .\templates\blog\post_list.html:9
+msgid "Post list"
+msgstr "قائمة المنشورات"
+
+#: .\templates\blog\post_list.html:12
+msgctxt "verb"
+msgid "post"
+msgstr "نشر"
+
+#: .\templates\blog\post_table.html:9
+msgid "comment count"
+msgstr "عدد التعليقات"
+
+#: .\templates\blog\post_table.html:34
+msgid "There are no posts."
+msgstr "ليس هناك أي منشورات."
+
+#: .\templates\blog\reply_form.html:4 .\templates\blog\reply_form.html:15
+msgid "reply"
+msgstr "رد"
+
+#: .\templates\blog\reply_form.html:7
+#, python-format
+msgid "Reply to a comment in post \"%(post_title)s\""
+msgstr "رد على تعليق في منشور \"%(post_title)s\""
+
+#: .\templates\blog\user_detail.html:4 .\templates\blog\user_detail.html:8
+msgid "user"
+msgstr "مستخدم"
+
+#: .\templates\blog\user_detail.html:21 .\templates\blog\user_list.html:20
+msgid "username"
+msgstr "اسم مستخدم"
+
+#: .\templates\blog\user_detail.html:29
+msgid "bio"
+msgstr "نبذة شخصية"
+
+#: .\templates\blog\user_detail.html:34
+#, python-format
+msgid "%(username)s's posts"
+msgstr "منشورات %(username)s"
+
+#: .\templates\blog\user_form.html:4 .\templates\blog\user_form.html:7
+msgid "Edit your profile"
+msgstr "تحرير الملف الشخصي"
+
+#: .\templates\blog\user_list.html:4 .\templates\blog\user_list.html:9
+msgid "user list"
+msgstr "قائمة المستخدمين"
+
+#: .\templates\blog\user_list.html:21
+msgid "full name"
+msgstr "الاسم الكامل"
+
+#: .\templates\blog\user_list.html:22
+msgid "date joined"
+msgstr "تاريخ الانضمام"
+
+#: .\templates\blog\user_list.html:36
+msgid "There are no users."
+msgstr "ليس هناك أي مستخدمين."
+
+#: .\templates\index.html:5
+msgid "A simple experimental blogging platform I made for fun and learning"
+msgstr "منصة تدوين تجريبية بسيطة أنشأتها للتسلية والتعلم"

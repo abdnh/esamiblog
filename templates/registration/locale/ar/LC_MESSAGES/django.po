@@ -1,0 +1,127 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-03 03:28+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language: Arabic\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: .\registration\logged_out.html:4
+msgid "You are logged out"
+msgstr "تم تسجيل خروجك"
+
+#: .\registration\logged_out.html:5
+msgid "Click here to log in again"
+msgstr "انقر هنا للدخول مجددًا"
+
+#: .\registration\login.html:7
+msgid "Your username or password is incorrect. Try again."
+msgstr "اسم المستخدم أو كلمة السر غير صحيحين. أعد المحاولة"
+
+#: .\registration\login.html:12
+msgid "You do not have permission to access this page."
+msgstr "ليس لديك الإذن بالوصول إلى هذه الصفحة."
+
+#: .\registration\login.html:14
+msgid "Log in to see this page."
+msgstr "سجل الدخول لرؤية هذه الصفحة."
+
+#: .\registration\login.html:22
+msgid "username"
+msgstr "اسم المستخدم"
+
+#: .\registration\login.html:26
+msgid "password"
+msgstr "كلمة المرور"
+
+#: .\registration\login.html:30
+msgid "Log in"
+msgstr "دخول"
+
+#: .\registration\login.html:34
+msgid "Lost your password?"
+msgstr "هل فقدت كلمة المرور؟"
+
+#: .\registration\password_reset_complete.html:5
+msgid "Your password was reset successfully!"
+msgstr "تمت إعادة تعيين كلمة مرورك بنجاح!"
+
+#: .\registration\password_reset_complete.html:6
+msgid "Log in again?"
+msgstr "هل تريد الدخول مجددًا؟"
+
+#: .\registration\password_reset_confirm.html:6
+msgid "Enter your new password and confirm it"
+msgstr "أدحل كلمة المرور الجديدة وأكدها"
+
+#: .\registration\password_reset_confirm.html:12
+msgid "Your new password"
+msgstr "كلمة المرور الجديدة"
+
+#: .\registration\password_reset_confirm.html:22
+#: .\registration\password_reset_form.html:12
+msgid "Change password"
+msgstr "تغيير كلمة المرور"
+
+#: .\registration\password_reset_confirm.html:27
+msgid "Failed to change password"
+msgstr "فشل تغيير كلمة المرور"
+
+#: .\registration\password_reset_confirm.html:28
+msgid ""
+"Your password reset link is invalid, probably becaused it was already used. "
+"Please request a new one."
+msgstr ""
+"رابط إعادة تعيين كلمة المرور غير صالح، غالبًا لأنه قد استخدم بالفعل. الرجاء "
+"طلب رابط جديد."
+
+#: .\registration\password_reset_done.html:5
+msgid ""
+"We sent you instructions to reset your password to your email. If they don't "
+"arrive within minutes, check your spam folder."
+msgstr ""
+"أرسلنا لك تعليمات لإعادة تعيين كلمة مرورك إلى بريدك الإلكتروني. إذا لم تصل "
+"في غضون دقائق، ابحث عنها في مجلد الرسائل غير المرغوب فيها"
+
+#: .\registration\password_reset_email.html:2
+#, python-format
+msgid ""
+"Someone requested to change the password of the email address %(email)s. "
+"Follow the link below to change it, and if you have not requested this "
+"change, just ignore this email:"
+msgstr ""
+"طلب أحد ما إعادة تعيين كلمة مرور البريد الإلكتروني %(email)s. اتبع الرابط في "
+"الأسفل لتغييرها، وإذا لم تكن قد طلبت هذا، فتجاهل هذه الرسالة."
+
+#: .\registration\password_reset_form.html:5
+msgid ""
+"Forgot your password? enter your email address below and we will send you "
+"instructions to reset it."
+msgstr ""
+"نسيت كلمة المرور؟ أدخل بريدك الإلكتروني في الأسفل لنرسل لك تعليمات لإعادة "
+"تعيينها"
+
+#: .\registration\password_reset_form.html:11
+msgid "email"
+msgstr "بريد إلكتروني"
+
+#: .\registration\password_reset_subject.txt:3
+#, python-format
+msgid "Reseting your password in %(site_name)s"
+msgstr "إعادة تعيين كلمة مرورك في %(site_name)s"
+
+#: .\registration\signup.html:4 .\registration\signup.html:7
+#: .\registration\signup.html:11
+msgid "sign up"
+msgstr "تسجيل حساب"

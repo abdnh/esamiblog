@@ -1,16 +1,17 @@
 from django.urls import reverse
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.utils.translation import gettext_lazy as _
 
 def user_content_path(user, filename):
     return 'usercontent/{0}/profile{1}'.format(user.id, filename[filename.rfind('.'):])
 
 class User(AbstractUser):
-    email = models.EmailField(verbose_name='بريد إلكتروني', unique=True, error_messages={
-        'unique': 'هذا البريد الإلكتروني مستخدم بالفعل.'
+    email = models.EmailField(_('email address'), unique=True, error_messages={
+        'unique': _('This email address is already used.')
     })
-    bio = models.TextField(verbose_name='نبذة عن الكاتب', null=True, blank=True)
-    profile_picture = models.ImageField(verbose_name='صورة', upload_to=user_content_path, null=True, blank=True)
+    bio = models.TextField(_('about the author'), null=True, blank=True)
+    profile_picture = models.ImageField(_('profile picture'), upload_to=user_content_path, null=True, blank=True)
 
     class Meta:
         ordering = ['username']
@@ -23,11 +24,11 @@ class User(AbstractUser):
 
 
 class Category(models.Model):
-    name = models.CharField(verbose_name='اسم', max_length=255)
+    name = models.CharField(_('name'), max_length=255)
 
     class Meta:
         ordering = ['name']
-        verbose_name_plural = "categories"
+        verbose_name_plural = _('categories')
 
     def get_absolute_url(self):
         return reverse('category-detail', args=[str(self.id)])
@@ -37,12 +38,12 @@ class Category(models.Model):
 
 
 class Post(models.Model):
-    title = models.CharField(verbose_name='عنوان', max_length=200)  
-    created = models.DateTimeField('تاريخ النشر', auto_now_add=True)
-    mod = models.DateTimeField('آخر تعديل', auto_now=True)
-    content = models.TextField(verbose_name='نص')
-    writer = models.ForeignKey(User, verbose_name='كاتب', null=True, on_delete=models.SET_NULL)
-    categories = models.ManyToManyField(Category, verbose_name='مواضيع', blank=True)
+    title = models.CharField(_('title'), max_length=200)  
+    created = models.DateTimeField(_('publication date'), auto_now_add=True)
+    mod = models.DateTimeField(_('last modification date'), auto_now=True)
+    content = models.TextField(_('text'))
+    writer = models.ForeignKey(User, verbose_name=_('author'), null=True, on_delete=models.SET_NULL)
+    categories = models.ManyToManyField(Category, verbose_name=_('categories'), blank=True)
 
     def __str__(self):
         return self.title
@@ -55,14 +56,14 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    created = models.DateTimeField(verbose_name='تاريخ الإنشاء', auto_now_add=True)
-    content = models.TextField(verbose_name='نص التعليق')
-    writer = models.ForeignKey(User, verbose_name='كاتب', null=True, on_delete=models.SET_NULL)
-    post = models.ForeignKey(Post, verbose_name='منشور', null=True, on_delete=models.SET_NULL, related_name='comments')
-    parent_comment = models.ForeignKey('self', verbose_name='التعليق الأب', null=True, on_delete=models.SET_NULL)
+    created = models.DateTimeField(verbose_name=_('publication date'), auto_now_add=True)
+    content = models.TextField(verbose_name=_('content'))
+    writer = models.ForeignKey(User, verbose_name=_('author'), null=True, on_delete=models.SET_NULL)
+    post = models.ForeignKey(Post, verbose_name=_('parent post'), null=True, on_delete=models.SET_NULL, related_name='comments')
+    parent_comment = models.ForeignKey('self', verbose_name=_('parent comment'), null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
-        return f'التعليق #{self.id} على منشور "{self.post.title}"'
+        return _('comment #%(comment_id) on post "%(post_title)"') % {'comment_id': self.id, 'post_title': self.post.title}
 
     def get_absolute_url(self):
         return reverse('comment-detail', kwargs={'pk': self.id})

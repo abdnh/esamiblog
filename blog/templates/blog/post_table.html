@@ -1,11 +1,12 @@
 {% if post_list %}
+{% load i18n %}
 <table id="items-table">
   <thead>
     <tr>
-      <th>عنوان</th>
-      <th>كاتب</th>
-      <th>تاريخ الإنشاء</th>
-      <th>عدد التعليقات</th>
+      <th>{% translate 'title' %}</th>
+      <th>{% translate 'author' %}</th>
+      <th>{% translate 'publication date' %}</th>
+      <th>{% translate 'comment count' %}</th>
       {% if request.user.is_authenticated %}<th></th>{% endif %}
     </tr>
   </thead>
@@ -30,5 +31,5 @@
   </tbody>
 </table>
 {% else %}
-  <p>ليس هناك أي منشورات.</p>
+  <p>{% translate 'There are no posts.' %}</p>
 {% endif %}

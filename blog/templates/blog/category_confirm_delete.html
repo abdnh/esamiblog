@@ -1,14 +1,15 @@
 {% extends "generic.html" %}
+{% load i18n %}
 
-{% block subtitle %}حذف موضوع "{{ category }}"{% endblock %}
+{% block subtitle %}{% blocktranslate %}Delete category "{{ category }}"{% endblocktranslate %}{% endblock %}
 
 {% block content %}
-<h1>حذف موضوع</h1>
-<p>هل أنت متأكد من أنك تريد حذف الموضوع "{{ category }}"؟</p>
+<h1>{% translate 'Delete category' %}</h1>
+<p>{% blocktranslate %}Are you sure you want to delete the category "{{ category }}"?{% endblocktranslate %}</p>
 
 <form action="" method="POST">
   {% csrf_token %}
-  <input type="submit" value="نعم">
+  <input type="submit" value="{% translate 'Yes' %}">
 </form>
 
 {% endblock %}

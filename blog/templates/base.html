@@ -1,12 +1,16 @@
 <!doctype html>
-<html dir="rtl" lang="ar">
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_current_language_bidi as LANGUAGE_BIDI %}
+{% get_language_info for LANGUAGE_CODE as lang %}
+<html dir="{{ LANGUAGE_BIDI|yesno:'rtl,ltr,auto' }}" lang="{{ lang.code }}">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/highlight.css' %}">
-    <title>{% block title %}عصامي بلوغ{% endblock %}</title>
+    <title>{% block title %}{% translate 'Esami blog' %}{% endblock %}</title>
   </head>
   {% load esami_extras %}
   <body style="background-color: {% get_item request.session 'bgcolor' DEFAULT_BG_COLOR %};">
@@ -14,25 +18,25 @@
       {% if request.user.is_authenticated %}
         <img class="profile-picture" alt="profile picture" src="{% if request.user.profile_picture %}{{ request.user.profile_picture.url }}{% else %}{% static 'images/default-profile-picture.jpg' %}{% endif %}" wdith="150" height="100">
       {% else %}
-      <div class="logo">عصامي</div>
+      <div class="logo">{% translate 'Esami' %}</div>
       {% endif %}
       <b><a href="{% url 'profile' %}">{{ request.user.get_username }}</a></b>
       <ul id="usernav">
         {% if request.user.is_authenticated %}
-        <li><a href="{% url 'logout' %}?next={{request.path}}">خروج</a></li>
+        <li><a href="{% url 'logout' %}?next={{request.path}}">{% translate 'Log out' %}</a></li>
         {% else %}
-        <li><a href="{% url 'login' %}?next={{request.path}}">دخول</a></li>
-        <li><a href="{% url 'signup' %}?next={{request.path}}">تسجيل</a></li>
+        <li><a href="{% url 'login' %}">{% translate 'Log in' %}</a></li>
+        <li><a href="{% url 'signup' %}">{% translate 'Sign up' %}</a></li>
         {% endif %}
       </ul>
       <ul id="navlinks">
-        <li><a href="{% url 'index' %}">الصفحة الرئيسية</a></li>
-        <li><a href="{% url 'post-list' %}">منشورات</a></li>
-        <li><a href="{% url 'user-list' %}">مستخدمون</a></li>
-        <li><a href="{% url 'category-list' %}">مواضيع</a></li>
+        <li><a href="{% url 'index' %}">{% translate 'Home Page' %}</a></li>
+        <li><a href="{% url 'post-list' %}">{% translate 'Posts' %}</a></li>
+        <li><a href="{% url 'user-list' %}">{% translate 'Users' %}</a></li>
+        <li><a href="{% url 'category-list' %}">{% translate 'Categories' %}</a></li>
       </ul>
       <ul>
-        <li><a href="{% url 'preferences' %}">إعدادات الموقع</a></li>
+        <li><a href="{% url 'preferences' %}">{% translate 'site preferences'|title %}</a></li>
       </ul>
     </nav>
     <main>
@@ -50,7 +54,7 @@
                         </a>
                     {% endif %}
                     <span class="page-current">
-                        الصفحة {{ page_obj.number }} من أصل {{ page_obj.paginator.num_pages }}
+                        {% blocktranslate  with page_num=page_obj.number num_pages=page_obj.paginator.num_pages %}Page {{ page_num }} out {{ num_pages }}{% endblocktranslate %}
                     </span>
                     {% if page_obj.has_next %}
                         <a href="{{ request.path }}?page={{ page_obj.next_page_number }}" class="svgicon">

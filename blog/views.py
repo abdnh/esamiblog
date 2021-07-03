@@ -83,6 +83,7 @@ def comment_children(comment, padding):
         tree += [(padding, child)] + comment_children(child, padding+50)
     return tree
 
+
 def post_comment_tree(post, padding):
     tree = []
     for comment in Comment.objects.filter(post=post, parent_comment__isnull=True):

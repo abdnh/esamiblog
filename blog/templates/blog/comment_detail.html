@@ -1,4 +1,5 @@
 {% extends "generic.html" %}
+{% load i18n %}
 
 {% block subtitle %}{{ comment.content|truncatechars:30 }}{% endblock %}
 
@@ -14,17 +15,17 @@
         {% endif %}
     {% endcomment %}
     <div id="post-info">
-        <span>الكاتب: <a href="{{ post.writer.get_absolute_url }}">{{ comment.writer.get_username }}</a></span>
-        <span>تاريخ النشر: {{ comment.created }}</span>
-        {% if comment.parent_comment %}<span>ردًا على: <a href="{{ comment.parent_comment.get_absolute_url }}">{{ comment.parent_comment.content|truncatechars:30 }}</a></span>{% endif %}
-        <span>منشور: <a href="{{ comment.post.get_absolute_url }}">{{ comment.post.title|truncatechars:30 }}</a></span>
+        <span>{% translate 'author' %}: <a href="{{ post.writer.get_absolute_url }}">{{ comment.writer.get_username }}</a></span>
+        <span>{% translate 'publication date' %}: {{ comment.created }}</span>
+        {% if comment.parent_comment %}<span>{% translate 'replying to' %}: <a href="{{ comment.parent_comment.get_absolute_url }}">{{ comment.parent_comment.content|truncatechars:30 }}</a></span>{% endif %}
+        <span>{% translate 'post' %}: <a href="{{ comment.post.get_absolute_url }}">{{ comment.post.title|truncatechars:30 }}</a></span>
     </div>
   </header>
   <article>
     {{ comment.content|markdown }}
   </article>
 
-  <button class="button" id="comment-button"><a href="{% url 'comment-reply' comment.id %}">تعليق</a></button>
+  <button class="button" id="comment-button"><a href="{% url 'comment-reply' comment.id %}">{% translate 'comment' %}</a></button>
   {% include 'blog/comment_tree.html' %}
 
 {% endblock %}

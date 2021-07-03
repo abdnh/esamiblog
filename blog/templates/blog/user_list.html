@@ -1,24 +1,25 @@
 {% extends "generic.html" %}
+{% load i18n %}
 
-{% block subtitle %}قائمة المستخدمين{% endblock %}
+{% block subtitle %}{% translate 'user list' %}{% endblock %}
 
 {% load esami_extras %}
 
 {% block content %}
-  <h1>قائمة المستخدمين</h1>
+  <h1>{% translate 'user list' %}</h1>
   <div id="ops-bar">
     <form method="GET" action="">
       <input type="search" name="search" value="{% get_item request.GET 'search' '' %}">
-      <input type="submit" value="بحث">
+      <input type="submit" value="{% translate 'search' %}">
     </form>
   </div>
   {% if user_list %}
   <table id="items-table">
     <thead>
       <tr>
-        <th>اسم المستخدم</th>
-        <th>الاسم الكامل</th>
-        <th>تاريخ الانضمام</th>
+        <th>{% translate 'username'|title %}</th>
+        <th>{% translate 'full name'|title %}</th>
+        <th>{% translate 'date joined'|title %}</th>
       </tr>
     </thead>
     <tbody>
@@ -32,6 +33,6 @@
     </tbody>
   </table>
   {% else %}
-    <p>ليس هناك أي مستخدمين</p>
+    <p>{% translate 'There are no users.' %}</p>
   {% endif %} 
 {% endblock %}

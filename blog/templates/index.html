@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 {% block content %}
-<div class="logo">عصامي بلوغ</div>
-<p style="text-align: center; margin-top: 10px;">منصة تدوين تجريبية بسيطة أنشأتها للتسلية والتعلم.</p>
+<div class="logo">{% translate 'Esami blog' %}</div>
+<p style="text-align: center; margin-top: 10px;">{% translate 'A simple experimental blogging platform I made for fun and learning' %}</p>
 {% endblock %}

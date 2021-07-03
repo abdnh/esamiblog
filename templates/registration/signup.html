@@ -1,12 +1,13 @@
 {% extends "generic.html" %}
+{% load i18n %}
 
-{% block subtitle %}تسجيل حساب{% endblock %}
+{% block subtitle %}{% translate 'sign up'|title %}{% endblock %}
 
 {% block content %}
-  <h2>تسجيل حساب</h2>
+  <h2>{% translate 'sign up'|title %}</h2>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">تسجيل</button>
+    <button type="submit">{% translate 'sign up' %}</button>
   </form>
 {% endblock %}

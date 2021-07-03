@@ -1,9 +1,10 @@
 {% extends "generic.html" %}
+{% load i18n %}
 
-{% block subtitle %}تعليق{% endblock %}
+{% block subtitle %}{% translate 'comment' %}{% endblock %}
 
 {% block content %}
-  <h1>تعليق على منشور "{{ post.title }}"</h1>
+  <h1>{% blocktranslate with post_title=post.title %}Comment on post "{{ post_title }}"{% endblocktranslate %}</h1>
   {% load esami_extras %}
   <div style="margin-bottom: 10px;">{{ post.content|markdown }}</div>
   <form action="" method="post">
@@ -11,6 +12,6 @@
     <table>
       {{ form.as_table }}
     </table>
-    <input type="submit" value="تعليق">
+    <input type="submit" value="{% translate 'comment' %}">
   </form>
 {% endblock %}

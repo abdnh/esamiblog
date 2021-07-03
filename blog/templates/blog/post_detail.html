@@ -1,5 +1,5 @@
 {% extends "generic.html" %}
-
+{% load i18n %}
 {% block subtitle %}{{ post.title }}{% endblock %}
 
 {% block content %}
@@ -11,12 +11,14 @@
       {% delete_icon post %}
     {% endif %}
     <div id="post-info">
-      <span>الكاتب: <a href="{{ post.writer.get_absolute_url }}">{{ post.writer.get_username }}</a></span>
-      <span>تاريخ النشر: {{ post.created }}</span>
+      <span>{% translate 'author' %}: <a href="{{ post.writer.get_absolute_url }}">{{ post.writer.get_username }}</a></span>
+      <span>{% translate 'publication date' %}: {{ post.created }}</span>
       {% if created_mod_delta.total_seconds >= 60 %}
-        <span>آخر تعديل: {{ post.mod }}</span>
+        <span>{% translate 'last modification date' %}: {{ post.mod }}</span>
       {% endif %}
-      <span>{{ comments|length }} تعليق</span>
+      {% comment %}FIXME: pluralize translation{% endcomment %}
+      <span>{% blocktranslate with comment_count=comments|length %}{{ comment_count }} comment(s){% endblocktranslate %}</span>
+      {% comment %}FIXME: translation {% endcomment %}
       {% category_list "<span>مواضيع:" post "</span>" %}
     </div>
   </header>
@@ -24,7 +26,7 @@
     {{ post.content|markdown }}
   </article>
 
-  <button class="button" id="comment-button"><a href="{% url 'comment-create' post.id %}">تعليق</a></button>
+  <button class="button" id="comment-button"><a href="{% url 'comment-create' post.id %}">{% translate 'comment' %}</a></button>
   {% include 'blog/comment_tree.html' %}
 
 {% endblock %}

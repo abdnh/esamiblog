@@ -1,7 +1,8 @@
 {% extends "generic.html" %}
+{% load i18n %}
 
-{% block subtitle %}الصفحة التي طلبتها غير موجودة{% endblock %}
+{% block subtitle %}{% translate 'Page not found' %}{% endblock %}
 
 {% block content %}
-<p>الصفحة التي طلبتها غير موجودة.</p>
+<p>{% translate 'Requested page not found on the site' %}</p>
 {% endblock %}

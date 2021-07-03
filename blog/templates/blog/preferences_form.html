@@ -1,14 +1,15 @@
 {% extends "generic.html" %}
+{% load i18n %}
 
-{% block subtitle %}إعدادات الموقع{% endblock %}
+{% block subtitle %}{% translate 'site preferences' %}{% endblock %}
 
 {% block content %}
-  <h1>إعدادات الموقع</h1>
+  <h1>{% translate 'site preferences' %}</h1>
   <form action="" method="post">
     {% csrf_token %}
     <table>
       {{ form.as_table }}
     </table>
-    <input type="submit" value="حفظ">
+    <input type="submit" value="{% translate 'save' %}">
   </form>
 {% endblock %}

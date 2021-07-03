@@ -1,18 +1,19 @@
 {% extends "generic.html" %}
+{% load i18n %}
 
-{% block subtitle %}قائمة المواضيع{% endblock %}
+{% block subtitle %}{% translate 'Category list' %}{% endblock %}
 
 {% load esami_extras %}
 
 {% block content %}
-  <h1>قائمة المواضيع</h1>
+  <h1>{% translate 'Category list' %}</h1>
   <div id="ops-bar">
     {% if request.user.is_authenticated %}
-      <button class="button"><a href="{% url 'category-create' %}">أضف</a></button>
+      <button class="button"><a href="{% url 'category-create' %}">{% translate 'Add' %}</a></button>
     {% endif %}
     <form method="GET" action="">
       <input type="search" name="search" value="{% get_item request.GET 'search' '' %}">
-      <input type="submit" value="بحث">
+      <input type="submit" value="{% translate 'search' %}">
     </form>
   </div>
   {% if category_list %}
@@ -29,6 +30,6 @@
       {% endfor %}
     </ul>
   {% else %}
-    <p>ليس هناك أي مواضيع.</p>
+    <p>{% translate 'There are no categories.' %}</p>
   {% endif %} 
 {% endblock %}

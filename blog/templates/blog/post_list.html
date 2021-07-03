@@ -1,18 +1,19 @@
 {% extends "generic.html" %}
+{% load i18n %}
 
-{% block subtitle %}قائمة المنشورات{% endblock %}
+{% block subtitle %}{% translate 'Post list' %}{% endblock %}
 
 {% load esami_extras %}
 
 {% block content %}
-  <h1>قائمة المنشورات</h1>
+  <h1>{% translate 'Post list' %}</h1>
   <div id="ops-bar">
     {% if request.user.is_authenticated %}
-      <button class="button"><a href="{% url 'post-create' %}">انشر</a></button>
+      <button class="button"><a href="{% url 'post-create' %}">{% translate 'post' context 'verb' %}</a></button>
     {% endif %}
     <form method="GET" action="">
       <input type="search" name="search" value="{% get_item request.GET 'search' '' %}">
-      <input type="submit" value="بحث">
+      <input type="submit" value="{% translate 'search' %}">
     </form>
   </div>
   {% include "blog/post_table.html" %}

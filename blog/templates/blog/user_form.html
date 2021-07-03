@@ -1,14 +1,15 @@
 {% extends "generic.html" %}
+{% load i18n %}
 
-{% block subtitle %}تعديل معلوماتك الشخصية{% endblock %}
+{% block subtitle %}{% translate 'Edit your profile' %}{% endblock %}
 
 {% block content %}
-  <h1>تعديل معلوماتك الشخصية</h1>
+  <h1>{% translate 'Edit your profile' %}</h1>
   <form action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <table>
     {{ form.as_table }}
     </table>
-    <input type="submit" value="حفظ">
+    <input type="submit" value="{% translate 'save' %}">
   </form>
 {% endblock %}

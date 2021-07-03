@@ -1,10 +1,10 @@
 {% extends "generic.html" %}
+{% load i18n %}
 
-{% block subtitle %}موضوع: {{ category.name }}{% endblock %}
-
+{% block subtitle %}{% blocktranslate with category_name=category.name %}Category: {{ category_name }}{% endblocktranslate %}{% endblock %}
 {% block content %}
   <header>
-    <h1>موضوع: {{ category.name }}</h1>
+    <h1>{% blocktranslate with category_name=category.name %}Category: {{ category_name }}{% endblocktranslate %}</h1>
     {% if user.is_superuser %}
       {% load esami_extras %}
       {% update_icon category %}
@@ -13,7 +13,7 @@
   </header>
 
   {% if posts %}
-    <h2>منشورات</h2>
+    <h2>{% translate 'Posts' %}</h2>
     <ul>
       {% for post in posts %}
         <li>

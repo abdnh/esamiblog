@@ -1,16 +1,17 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
 
   {% if form.errors %}
-    <p>اسم المستخدم أو كلمة السر غير صالحين. حاول مجددًا.</p>
+    <p>{% translate 'Your username or password is incorrect. Try again.' %}</p>
   {% endif %}
 
   {% if next %}
     {% if user.is_authenticated %}
-      <p>ليس لحسابك صلاحية بالوصول إلى هذه الصفحة. للوصول سجل الدخول بحساب له صلاحية.</p>
+      <p>{% translate 'You do not have permission to access this page.' %}</p>
     {% else %}
-      <p>سجل الدخول لرؤية هذه الصفحة.</p>
+      <p>{% translate 'Log in to see this page.' %}</p>
     {% endif %}
   {% endif %}
 
@@ -18,18 +19,18 @@
     {% csrf_token %}
     <table>
       <tr>
-        <td>اسم المستخدم:</td>
+        <td>{% translate 'username' %}:</td>
         <td>{{ form.username }}</td>
       </tr>
       <tr>
-        <td>كلمة السر:</td>
+        <td>{% translate 'password' %}:</td>
         <td>{{ form.password }}</td>
       </tr>
     </table>
-    <input type="submit" value="دحول" />
+    <input type="submit" value="{% translate 'Log in' %}" />
     <input type="hidden" name="next" value="{{ next }}" />
   </form>
 
-  <p><a href="{% url 'password_reset' %}">فقدت كلمة السر؟</a></p>
+  <p><a href="{% url 'password_reset' %}">{% translate 'Lost your password?' %}</a></p>
 
 {% endblock %}
